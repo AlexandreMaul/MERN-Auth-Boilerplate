@@ -4,6 +4,7 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const keys = require("../../config/keys");
 const mongoose = require("mongoose");
+const getMessage = require("../../config/messages");
 
 const validateRegisterInput = require("../../validation/register");
 const validateLoginInput = require("../../validation/login");
@@ -22,7 +23,7 @@ router.post("/register", (req, res) => {
 
   User.findOne({ email: req.body.email }).then(user => {
     if (user) {
-      return res.status(400).json({ email: "Email already exists" });
+      return res.status(400).json({ email: getMessage("emailexists") });
     } else {
       const newUser = new User({
         name: req.body.name,
@@ -60,7 +61,7 @@ router.post("/login", (req, res) => {
   User.findOne({ email }).then(user => {
 
     if (!user) {
-      return res.status(404).json({ emailnotfound: "Email not found" });
+      return res.status(404).json({ emailnotfound: getMessage("emailnotfound") });
     }
 
     bcrypt.compare(password, user.password).then(isMatch => {
@@ -86,7 +87,7 @@ router.post("/login", (req, res) => {
       } else {
         return res
           .status(400)
-          .json({ passwordincorrect: "Password incorrect" });
+          .json({ passwordincorrect: getMessage("passwordincorrect") });
       }
     });
   });
@@ -102,7 +103,7 @@ router.post("/info", (req, res) => {
   User.findById({ _id: new mongoose.Types.ObjectId(id) }).then(user => {
     
     if (!user) {
-      return res.status(404).json({ userNotFound: "User not found" });
+      return res.status(404).json({ userNotFound: getMessage("usernotfound") });
     }
 
     res.json({
