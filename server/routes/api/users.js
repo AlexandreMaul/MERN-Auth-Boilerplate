@@ -109,9 +109,7 @@ router.post("/info", (req, res) => {
     res.json({
       infoUser:
       {
-        name: user.name,
-        firstname: user.firstname,
-        level: user.level
+        name: user.name
       }
     })
   });
