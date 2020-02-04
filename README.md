@@ -32,6 +32,10 @@ npm i -g concurrently nodemon
 
 npm run dev
 ```
+## Developing
+For the explanation of the client package : [Client](./client/README.md)
+
+For the explanation of the server package : [Server](./server/README.md)
 ## Built With
 * [React](https://github.com/facebook/react) - Front library
 * [NodeJS](https://nodejs.org) - Backend
