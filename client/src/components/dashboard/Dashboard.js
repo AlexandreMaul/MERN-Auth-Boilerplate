@@ -14,8 +14,8 @@ class Dashboard extends Component {
 
     return (
       <div>
-        <p>Bienvenue, {user.name}</p>
-        <p>Vous êtes connecté</p>
+        <p>Welcome, {user.name}</p>
+        <p>You are auth !</p>
         <button onClick={this.onLogoutClick} >
           Logout
         </button>

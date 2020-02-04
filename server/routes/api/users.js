@@ -102,7 +102,7 @@ router.post("/info", (req, res) => {
   User.findById({ _id: new mongoose.Types.ObjectId(id) }).then(user => {
     
     if (!user) {
-      return res.status(404).json({ userNotFound: "L'utilisateur est introuvable" });
+      return res.status(404).json({ userNotFound: "User not found" });
     }
 
     res.json({
